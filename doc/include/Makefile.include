@@ -1,0 +1,31 @@
+LATEX=pdflatex
+LATEXMK=latexmk
+LATEXOPT=-file-line-error -interaction=nonstopmode
+
+BUILD_DIR=./build/
+
+MAIN=report
+SOURCES=$(MAIN).tex Makefile 
+# FIGURES := $(shell ls fig/*.pdf)
+
+all:    $(MAIN).pdf
+
+.refresh:
+	touch .refresh
+
+$(MAIN).pdf: $(MAIN).tex .refresh $(SOURCES) # $(FIGURES)
+	$(LATEXMK) -jobname=${BUILD_DIR}report -latexoption="-file-line-error -interaction=nonstopmode" -pdf $(MAIN).tex
+
+force:
+	touch .refresh
+	$(MAKE) $(MAIN).pdf
+
+.PHONY: clean force all
+
+view:
+	xdg-open ${BUILD_DIR}${MAIN}.pdf &
+
+clean:
+	$(LATEXMK) -C $(MAIN).tex -outdir=${BUILD_DIR}
+	rm -f $(MAIN).pdfsync
+	rm -rf *~ *.tmp

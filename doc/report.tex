@@ -1,0 +1,66 @@
+\documentclass{article}
+\usepackage{amsmath,
+            amssymb,
+            amsthm,
+            atbegshi,
+            booktabs,
+            caption,
+            cleveref,
+            enumitem,
+            fancyhdr,
+            graphicx,
+            kpfonts,
+            listings,
+            lipsum,
+            longtable,
+            natbib,
+            pifont,
+            rotating,
+            subcaption,
+            tabulary,
+            thmtools,
+            tikz,
+            titletoc,
+            titlesec,
+            tocloft,
+            verbatim,
+            url,
+            xparse
+}
+\usepackage[T1]{fontenc}
+\usepackage[a4paper, margin=2.5cm]{geometry}
+
+\theoremstyle{definition}
+\newtheorem{definition}{Definition}[section]
+
+\setlist[enumerate]{topsep=0pt,itemsep=.41mm,partopsep=0ex,parsep=0ex}
+
+\pagestyle{fancy}
+\lhead{TDT4305}
+\rhead{Student number:730511}
+% \pagenumbering{Roman}
+\setcounter{tocdepth}{1}
+\graphicspath{{src/fig/}}
+
+
+\titleformat{\subsubsection}[runin]% runin puts it in the same paragraph
+       {\normalfont\bfseries}% formatting commands to apply to the whole heading
+       {\thesubsubsection}% the label and number
+       {0.5em}% space between label/number and subsection title
+       {}% formatting commands applied just to subsection title
+       []% punctuation or other commands following subsection title
+\title{TDT4305: Analyzing Large Datasets with Spark }
+\author{Anders Sildnes\\
+    NTNU}
+\date{\today}
+
+\begin{document}
+\maketitle
+
+
+\input{src/content}
+% \nocite{*}
+\bibliographystyle{plain}
+\bibliography{src/sources}
+
+\end{document}
